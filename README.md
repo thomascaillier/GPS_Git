@@ -1,6 +1,10 @@
 # GPS_Git
 GPS Strava projet
 
+::: Validation de copte GitHub :::
+
+https://github.com/thomascaillier/GPS_Git/invitations
+
 ::: Installation et configuration d'Eclipse :::
 
 Télécharger Eclipse:
