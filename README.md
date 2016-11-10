@@ -1,6 +1,6 @@
 # GPS_Git
 GPS Strava projet
-Test
+
 ::: Validation de copte GitHub :::
 
 https://github.com/thomascaillier/GPS_Git/invitations
