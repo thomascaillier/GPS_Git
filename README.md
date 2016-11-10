@@ -21,6 +21,10 @@ Une fois Eclipse installé et lancé :
 	- Rentrer votre identifiant, votre mot de passe, cocher Store in Secure Store -> Next
 	- Import as general project -> Next -> Finish 
 
+::: Recup last version :::
+Synchronize
+Pull
+
 ::: Liens utiles :::
 
 Rappel --> Accéder à l'explication des extensions de fichiers
