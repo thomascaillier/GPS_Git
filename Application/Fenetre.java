@@ -23,6 +23,10 @@ public class Fenetre extends JFrame {
     		this.setSize(800, 600);
     		this.setLocationRelativeTo(null); 
 	  	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		JPanel pan = new JPanel();
+  		  pan.setBackground(new Color(0,51,102));        
+   		 this.setContentPane(pan);               
+    		this.setVisible(true);
 	}
 
 }
