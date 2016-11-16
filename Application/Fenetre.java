@@ -19,12 +19,14 @@ public class Fenetre extends JFrame {
 	 * Create the frame.
 	 */
 	public Fenetre() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
-		setContentPane(contentPane);
+		this.setTitle("Fenetre");
+    		this.setSize(800, 600);
+    		this.setLocationRelativeTo(null); 
+	  	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		JPanel pan = new JPanel();
+  		  pan.setBackground(new Color(0,51,102));        
+   		 this.setContentPane(pan);               
+    		this.setVisible(true);
 	}
 
 }
