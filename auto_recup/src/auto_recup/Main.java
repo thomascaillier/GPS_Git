@@ -29,22 +29,26 @@ public class Main {
 	        listPath(files[i]);
 	      }
 	      else{
-	    	  if(getExtension(files[i])=="TCX")
+	    	  if(getExtension(files[i])=="TCX"){
 	    	  fichiersGPS[pos]=files[i];
+	    	  System.out.println(files[i].toString());
 	    	  pos++;
+	    	  }
 	      }
 	    }
 	    System.out.println("Saisir le dossier de destination:");
 	    String des = sc.nextLine();
 	    if(!des.endsWith("/") && !des.endsWith("\\"))des+="/";
 	    for(int i=0; i<=pos; i++){
-	    	File sortie= new File(new String(des+fichiersGPS[i].toString()));
+	    	String sortie = des;
+	    	sortie += fichiersGPS[i].toString();
 	    	if(!CopierFichier(fichiersGPS[i],sortie))
 	    		System.out.println("ERREUR: impossible de copier "+fichiersGPS[i].toString()+" vers "+des+"\n");
 	    }
 	}
 	
 	private static String getExtension(File file){
+		System.out.println(file.toString());
 		String filename = file.toString();
 		// si le fichier contient un point il a une extension
 		if (filename.lastIndexOf(".") > 0) {
@@ -57,11 +61,14 @@ public class Main {
 		}
 	}
 	
-	private static boolean CopierFichier(File Source, File Destination){
+	private static boolean CopierFichier(File Source, String DestSrc){
+		System.out.println(Source.toString());
+		File Destination=new File(DestSrc);
         boolean resultat=false;
         FileInputStream filesource=null;
         FileOutputStream fileDestination=null;
         try{
+        	Destination.createNewFile();
             filesource=new FileInputStream(Source);
             fileDestination=new FileOutputStream(Destination);
             byte buffer[]=new byte[512*1024];
