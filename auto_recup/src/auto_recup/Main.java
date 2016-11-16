@@ -25,15 +25,34 @@ public class Main {
 	    files = path.listFiles();
 	    Arrays.sort(files);
 	    for (int i = 0, n = files.length; i < n; i++) {
-	      System.out.println(files[i].toString());
 	      if (files[i].isDirectory()) {
 	        listPath(files[i]);
 	      }
 	      else{
-	    	  if(files[i].getExtension()=="TCX")
+	    	  if(getExtension(files[i])=="TCX")
 	    	  fichiersGPS[pos]=files[i];
 	    	  pos++;
 	      }
 	    }
+	    System.out.println("Saisir le dossier de destination:");
+	    String des = sc.nextLine();
+	    for(int i=0; i<=pos; i++){
+	    	
+	    }
+	}
+	
+	static String getExtension(File file){
+		String filename = file.toString();
+		// si le fichier contient un point il a une extension
+		if (filename.lastIndexOf(".") > 0) {
+		    // On récupère l'extension du fichier
+		    String ext = filename.substring(filename.lastIndexOf("."));
+		    // Si le fichier n'est pas en .txt on le met en .txt
+		    return ext;
+		} else {
+		    // sinon c'est que le fichier n'a pas d'extension
+		    System.out.println("Fichier incorrect");
+		    return "";
+		}
 	}
 }
