@@ -1,7 +1,7 @@
 package auto_recup;
 
 import java.io.*;
-//import org.apache.commons.io.IOUtils;
+import org.apache.commons.io.IOUtils;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -17,6 +17,7 @@ public class Main {
 		String src = sc.nextLine();
 		File dossier = new File(src);
 		listPath(dossier);
+		System.out.println("Fin du programme");
 	}
 	
 	static void listPath(File path) {
@@ -29,7 +30,6 @@ public class Main {
 	        listPath(files[i]);
 	      }
 	      else{
-	    	  System.out.println(getExtension(files[i]));
 	    	  if(getExtension(files[i]).equals(".tcx")){
 	    	  fichiersGPS.add(files[i]);
 	    	  }
@@ -39,8 +39,8 @@ public class Main {
 	    String des = sc.nextLine();
 	    if(!des.endsWith("/") && !des.endsWith("\\"))des+="/";
 	    for(int i=0; i<fichiersGPS.size(); i++){
-	    	String sortie = des;
-	    	sortie += fichiersGPS.get(i).toString();
+	    	String sortie = fichiersGPS.get(i).toString().substring(fichiersGPS.get(i).toString().lastIndexOf("\\"));
+	    	sortie=des+sortie;
 	    	if(!CopierFichier(fichiersGPS.get(i),sortie))
 	    		System.out.println("ERREUR: impossible de copier "+fichiersGPS.get(i).toString()+" vers "+des+"\n");
 	    }
@@ -60,37 +60,28 @@ public class Main {
 	}
 	
 	private static boolean CopierFichier(File Source, String DestSrc){
-		System.out.println("aa"+Source.toString());
-		File Destination=new File(DestSrc);
-        boolean resultat=false;
-        FileInputStream filesource=null;
-        FileOutputStream fileDestination=null;
-        try{
-        	Destination.createNewFile();
-            filesource=new FileInputStream(Source);
-            fileDestination=new FileOutputStream(Destination);
-            byte buffer[]=new byte[512*1024];
-            int nblecture;
-            while((nblecture=filesource.read(buffer))!=-1){
-                fileDestination.write(buffer,0,nblecture);
-            }
-            resultat=true;
-        }catch(FileNotFoundException nf){
-            nf.printStackTrace();
-        }catch(IOException io){
-            io.printStackTrace();
-        }finally{
-            try{
-                filesource.close();
-            }catch(Exception e){
-                e.printStackTrace();
-            }
-            try{
-                fileDestination.close();
-            }catch(Exception e){
-                e.printStackTrace();
-            }
-        } 
-        return resultat;
+		File Destination = new File(DestSrc);
+		InputStream input;
+		OutputStream output;
+		try {
+			Destination.createNewFile();
+			input = new FileInputStream(Source);
+			output = new FileOutputStream(Destination);
+			IOUtils.copy(input, output);
+			System.out.println("Copie : "+Destination.toString());
+			input.close();
+			output.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Err1");
+			e.printStackTrace();
+			return false;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Err2");
+			e.printStackTrace();
+			return false;
+		}
+		return true;
     }
 }

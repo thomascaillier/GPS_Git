@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="src" path="commons-io-2.5-src"/>
-	<classpathentry kind="src" path="org"/>
+	<classpathentry kind="src" path="commons-io-2.5"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry exported="true" kind="lib" path="/GPS_Git/auto_recup/jdom-2.0.6/jdom-2.0.6-contrib.jar"/>
 	<classpathentry exported="true" kind="lib" path="/GPS_Git/auto_recup/jdom-2.0.6/jdom-2.0.6-javadoc.jar"/>
@@ -18,5 +17,7 @@
 	<classpathentry exported="true" kind="lib" path="jdom-2.0.6/lib/xercesImpl.jar"/>
 	<classpathentry exported="true" kind="lib" path="jdom-2.0.6/lib/xml-apis.jar"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry exported="true" kind="lib" path="/GPS_Git/auto_recup/commons-io-2.5/commons-io-2.5-javadoc.jar"/>
+	<classpathentry exported="true" kind="lib" path="/GPS_Git/auto_recup/commons-io-2.5/commons-io-2.5.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
