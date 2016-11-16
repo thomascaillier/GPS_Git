@@ -1,21 +1,20 @@
 package auto_recup;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
 
 	private static Scanner sc;
-	private static File fichiersGPS[];
-	private static int pos;
+	private static ArrayList<File> fichiersGPS = new ArrayList<File>();
 
 	public static void main(String[] args) {
 		sc = new Scanner(System.in);
 		System.out.println("Saisir le dossier à analyser:");
 		String src = sc.nextLine();
 		File dossier = new File(src);
-		pos=0;
 		listPath(dossier);
 	}
 	
@@ -29,26 +28,24 @@ public class Main {
 	        listPath(files[i]);
 	      }
 	      else{
-	    	  if(getExtension(files[i])=="TCX"){
-	    	  fichiersGPS[pos]=files[i];
-	    	  System.out.println(files[i].toString());
-	    	  pos++;
+	    	  System.out.println(getExtension(files[i]));
+	    	  if(getExtension(files[i]).equals(".tcx")){
+	    	  fichiersGPS.add(files[i]);
 	    	  }
 	      }
 	    }
 	    System.out.println("Saisir le dossier de destination:");
 	    String des = sc.nextLine();
 	    if(!des.endsWith("/") && !des.endsWith("\\"))des+="/";
-	    for(int i=0; i<=pos; i++){
+	    for(int i=0; i<fichiersGPS.size(); i++){
 	    	String sortie = des;
-	    	sortie += fichiersGPS[i].toString();
-	    	if(!CopierFichier(fichiersGPS[i],sortie))
-	    		System.out.println("ERREUR: impossible de copier "+fichiersGPS[i].toString()+" vers "+des+"\n");
+	    	sortie += fichiersGPS.get(i).toString();
+	    	if(!CopierFichier(fichiersGPS.get(i),sortie))
+	    		System.out.println("ERREUR: impossible de copier "+fichiersGPS.get(i).toString()+" vers "+des+"\n");
 	    }
 	}
 	
 	private static String getExtension(File file){
-		System.out.println(file.toString());
 		String filename = file.toString();
 		// si le fichier contient un point il a une extension
 		if (filename.lastIndexOf(".") > 0) {
@@ -62,7 +59,7 @@ public class Main {
 	}
 	
 	private static boolean CopierFichier(File Source, String DestSrc){
-		System.out.println(Source.toString());
+		System.out.println("aa"+Source.toString());
 		File Destination=new File(DestSrc);
         boolean resultat=false;
         FileInputStream filesource=null;
