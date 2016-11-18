@@ -30,7 +30,7 @@ public class Main {
 	        listPath(files[i]);
 	      }
 	      else{
-	    	  if(getExtension(files[i]).equals(".tcx")){
+	    	  if(getExtension(files[i]).equals(".tcx")||getExtension(files[i]).equals(".fit")){
 	    	  fichiersGPS.add(files[i]);
 	    	  }
 	      }
